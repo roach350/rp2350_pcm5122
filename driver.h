@@ -13,6 +13,11 @@
 #define PCM5122_ADDRESS_DEFAULT 0x4c
 #define PCM5122_I2S_FORMAT_DEFAULT 0x00 //i2s 16bit
 
+#define SDA_PIN 0
+#define SCL_PIN 1
+
+
+
 #define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt))) // from Arduino
 
 

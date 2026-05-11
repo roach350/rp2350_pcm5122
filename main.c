@@ -9,9 +9,9 @@
 
 #define PIO_CLOCK_PER_BIT 2
 #define BIT_PER_SAMPLE 16
-
-
-
+#define I2S_WSEL_PIN 7
+#define I2S_BCK_PIN 6
+#define I2S_DIN_PIN 8	
 
 
 void yield(void) {
@@ -107,20 +107,21 @@ int main() {
 /*
 	while (1){	
 		i2c_bus_scan();
+		sleep_ms(1000);
 	}
 */
 	rp2350_pcm5122_set_mute(&pcm5122, false);
-	rp2350_pcm5122_set_volume(&pcm5122, -103.0, 0); //mute left channel
-
+	//rp2350_pcm5122_set_volume(&pcm5122, -103.0, 0); //mute left channel
+	rp2350_pcm5122_set_volume(&pcm5122, 0, 0);
 
 
 	//i2s setup
 	rp2350_i2s_t i2s_support;
 	i2s_support.buffer = buffer;
 	i2s_support.dma_channel = 0;
-	i2s_support.bck_pin = 10;
-	i2s_support.wsel_pin = 11;
-	i2s_support.din_pin = 12;
+	i2s_support.bck_pin = I2S_BCK_PIN;
+	i2s_support.wsel_pin = I2S_WSEL_PIN;
+	i2s_support.din_pin = I2S_DIN_PIN;
 
 	i2s_init(&i2s_support);
 

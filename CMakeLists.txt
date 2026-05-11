@@ -26,17 +26,17 @@ pico_sdk_init()
 set("CMAKE_C_FLAGS" "${CMAKE_C_FLAGS}  -Wall -Wextra -Wshadow")
 
 # rest of your project
-add_executable(rp2350_i2s
+add_executable(rp2350_pcm5122
     driver.c
     ../rp2350_i2s/rp2350_i2s.c
     main.c
 )
 
-pico_generate_pio_header(rp2350_i2s ${CMAKE_CURRENT_LIST_DIR}/../rp2350_i2s/rp2350_i2s_out_16bit_2ch.pio)
+pico_generate_pio_header(rp2350_pcm5122 ${CMAKE_CURRENT_LIST_DIR}/../rp2350_i2s/rp2350_i2s_out_16bit_2ch.pio)
 
 # pull in common dependencies
-target_link_libraries(rp2350_i2s pico_stdlib hardware_xosc cmsis_core hardware_pio hardware_dma hardware_i2c)
+target_link_libraries(rp2350_pcm5122 pico_stdlib hardware_xosc cmsis_core hardware_pio hardware_dma hardware_i2c)
 
 # create map/bin/hex/uf2 file in addition to ELF.
-pico_enable_stdio_usb(rp2350_i2s 1)
-pico_add_extra_outputs(rp2350_i2s)
+pico_enable_stdio_usb(rp2350_pcm5122 1)
+pico_add_extra_outputs(rp2350_pcm5122)

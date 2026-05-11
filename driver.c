@@ -8,11 +8,11 @@ bool rp2350_pcm5122_init(rp2350_pcm5122_t *device){
 
 	/* i2c setup */
 	i2c_init(i2c_default, 100 * 1000);
-	gpio_set_function(PICO_DEFAULT_I2C_SDA_PIN, GPIO_FUNC_I2C);
-	gpio_set_function(PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C);
-	gpio_pull_up(PICO_DEFAULT_I2C_SDA_PIN);
-	gpio_pull_up(PICO_DEFAULT_I2C_SCL_PIN);
-    	bi_decl(bi_2pins_with_func(PICO_DEFAULT_I2C_SDA_PIN, PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C));
+	gpio_set_function(SDA_PIN, GPIO_FUNC_I2C);
+	gpio_set_function(SCL_PIN, GPIO_FUNC_I2C);
+	gpio_pull_up(SDA_PIN);
+	gpio_pull_up(SCL_PIN);
+    	bi_decl(bi_2pins_with_func(SDA_PIN, SCL_PIN, GPIO_FUNC_I2C));
 
 
 	uint8_t ret[32]; // for read tests
@@ -79,9 +79,10 @@ bool rp2350_pcm5122_init(rp2350_pcm5122_t *device){
 
 		printf("page:  %02X\n", page_check);
 		printf("format: %02X\n", format_check);
+		sleep_ms(1000);
 	}
-*/
 
+*/
 	return true;
 
 }
